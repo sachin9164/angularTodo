@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-3">
+            <br><br>
+            <div class="list-group">
+                <button type="button" class="list-group-item list-group-item-action ">
+                Labels
+                </button>
+                <button type="button" class="list-group-item list-group-item-action"><i class="material-icons">note</i>Notes</button>
+                <button type="button" class="list-group-item list-group-item-action"><i class="material-icons">schedule</i>Reminders</button>
+                <button type="button" class="list-group-item list-group-item-action"><i class="material-icons">archive</i>Archive</button>
+                <button type="button" class="list-group-item list-group-item-action"><i class="material-icons">restore_from_trash</i>Bin</button>
+              </div>
+        </div>
+        <!--Main Content-->
+        <div class="col-9 ">
+            <h4 style="text-align: center;">TO DO</h4>
+                <nav aria-label="breadcrumb ">
+                    <ol class="breadcrumb bg-light">
+                    <li class="breadcrumb-item active" aria-current="page">   
+                    </li>
+                    
+                    <input *ngIf="inputNote" style="display: inline-block;width: 60%;" type="text" id="input" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" (input)=onInput($event)>
+                    <span><button (click) = 'onClickNote()' style="margin-left: 10px;" id="add" type="button" class="btn btn-light"><i class="material-icons">add_circle</i></button></span>
+                    <span><button  (click) = 'onClickReminder()' (dblclick)='ondblClick()'  type="button" class="btn btn-light"><i class="material-icons">acess_alarm</i></button></span>
+                    <input *ngIf="inputImage" type="file" name="" id=""(input)="onInput($event)">
+                    <input *ngIf="inputReminder" type="time"  id="" (input) = "onRemainderInput($event)">
+                    
+                    </ol>
+                </nav>
+                <!--List-->
+                <div class="card" style="width: 18rem;display:inline-block;padding: 20px;margin: 10px;" *ngFor="let note of notes">
+                    <button style="float: right;" (click)="deleteNote(note)" class="btn btn-light"><i class="material-icons">delete</i></button>
+                    <div class="card-body">
+                    <h4 class="card-subtitle mb-2 text-muted">{{note.note}}</h4>
+                    </div>
+                  </div>
+                  <hr>
+                  <p>Reminders</p>
+                  <div class="card" style="width: 18rem;display:inline-block;padding: 20px;margin: 10px;" *ngFor="let reminder of reminders">
+                   <button style="float: right;" (click)="deleteReminder(reminder)" class="btn btn-light"><i class="material-icons">delete</i></button>
+                    <div class="card-body">
+                    <h4 class="card-subtitle mb-2 text-muted">{{reminder}}</h4>
+                    </div>
+                  </div>
+
+
+        </div>
+    </div>
+</div>
